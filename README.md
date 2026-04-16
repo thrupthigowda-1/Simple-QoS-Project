@@ -1,42 +1,78 @@
-# Simple QoS Priority Controller using Mininet
+# Simple QoS Priority Controller using POX and Mininet  
 Computer Networks Project
+
+## Problem Statement
+This project implements a simple SDN-based QoS Priority Controller using POX and Mininet to demonstrate controller-switch interaction, flow rule handling, and network behavior observation.
+
 ## Objective
-To simulate QoS in an SDN environment and analyze traffic behavior.
+To prioritize selected traffic flows using SDN rules and analyze network latency, throughput, and flow table behavior.
 
 ## Tools Used
 - Ubuntu VM
 - Mininet
+- POX Controller
 - Open vSwitch
 - ping
 - iperf
 
-## Topology Setup
-Used a single-switch topology with 3 hosts.
-<img width="687" height="623" alt="Pasted image (5)" src="https://github.com/user-attachments/assets/93e1ae7c-9fa7-43f9-8306-2bf7d842c13e" />
+## Topology Used
+Single switch topology with 3 hosts:
+- h1
+- h2
+- h3
 
-## Connectivity Test
-Verified host connectivity using pingall.
-<img width="581" height="389" alt="Screenshot From 2026-04-16 12-20-51" src="https://github.com/user-attachments/assets/535a852a-9f55-4ed9-9094-ff8f6662b274" />
+## Setup and Execution Steps
 
-## Latency Test
+### 
+Step 1: Start POX Controller
+python3 pox.py forwarding.qos_controller
 
-### h1 to h2
-<img width="581" height="389" alt="Screenshot From 2026-04-16 12-21-33" src="https://github.com/user-attachments/assets/acae8985-0a52-441a-b97b-15cedb706f19" />
+Step 2: Start Mininet Topology
+sudo mn --topo single,3 --controller remote
 
-### h1 to h3
-<img width="687" height="296" alt="Pasted image (5)" src="https://github.com/user-attachments/assets/b16854ac-c39a-4f2c-9d87-fc258fd14b1a" />
+Step 3: Connectivity Test
+pingall
 
-## Throughput Test
+Step 4: Latency Test
+h1 ping -c 5 h2
+h1 ping -c 5 h3
 
-### h1 to h2 iperf
-<img width="581" height="389" alt="Pasted image" src="https://github.com/user-attachments/assets/d1191ddc-2c61-4bbe-ab53-1044a55e3d25" />
+Step 5: Flow Table Verification
+sudo ovs-ofctl dump-flows s1
 
-### h1 to h3 iperf
-<img width="581" height="389" alt="Pasted image (2)" src="https://github.com/user-attachments/assets/9f7cdd51-b072-4d0c-9b9f-596ab0fdf164" />
+Step 6: Throughput Test
+h2 iperf -s &
+h1 iperf -c 10.0.0.2
 
-## Flow Table Verification
-Observed flow entries in OVS switch.
-<img width="911" height="427" alt="Pasted image (3)" src="https://github.com/user-attachments/assets/adcb8074-a4d9-4242-8313-b4e1cb5914e7" />
+###Controller Logic
 
-## Conclusion
-Successfully demonstrated simple QoS traffic behavior using Mininet.
+The custom POX controller handles PacketIn events and installs flow rules based on source and destination MAC addresses. The controller applies simple QoS-related forwarding logic and enables controller-switch interaction using OpenFlow.
+
+Screenshots
+1. POX Controller Startup
+<img width="1011" height="735" alt="image" src="https://github.com/user-attachments/assets/7d91ffd4-c230-47bb-aa4e-19f5b3036321" />
+
+2. Mininet Topology Startup
+<img width="856" height="729" alt="Pasted image" src="https://github.com/user-attachments/assets/222cf07e-1330-443d-bc48-1ec2a869d85f" />
+
+3. Connectivity Test - pingall
+<img width="875" height="533" alt="Pasted image (2)" src="https://github.com/user-attachments/assets/ad84fae0-1fe9-4fd0-a75f-4915acaf9f5a" />
+
+4. Latency Test - h1 to h2
+<img width="875" height="533" alt="Pasted image (3)" src="https://github.com/user-attachments/assets/dc4647e8-9c8a-4c5d-a718-dbd7bc475964" />
+
+5. Latency Test - h1 to h3
+<img width="875" height="533" alt="Pasted image (4)" src="https://github.com/user-attachments/assets/e6711788-92fa-4cf3-a41b-591ef5f2ba9b" />
+
+6. Flow Table Verification
+<img width="1199" height="405" alt="Pasted image (5)" src="https://github.com/user-attachments/assets/d8bdd6a4-913a-44e5-a4dc-d5a43106c919" />
+
+7. Throughput Test - iperf
+<img width="827" height="731" alt="Pasted image (7)" src="https://github.com/user-attachments/assets/7484d94c-4a33-41f1-9763-87cdb5b4d553" />
+
+The custom controller code used for this project is available in:
+
+qos_controller.py
+Conclusion
+
+This project successfully demonstrated controller-switch interaction, flow rule handling, network behavior observation, and basic performance analysis using POX and Mininet in an SDN environment.
