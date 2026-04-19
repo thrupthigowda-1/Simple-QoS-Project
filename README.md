@@ -3,6 +3,7 @@ Computer Networks Project
 
 ## Problem Statement
 The goal of this project is to implement a simple Software Defined Networking (SDN) based QoS Priority Controller using POX and Mininet. The system demonstrates controller-switch interaction, flow rule installation, and traffic behavior analysis.
+The controller applies rule-based forwarding for different traffic flows. While strict priority queuing is not enforced, the implementation demonstrates SDN-based flow control and traffic handling.
 
 ## Objective
 - To simulate QoS behavior in an SDN environment
