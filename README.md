@@ -81,11 +81,11 @@ h1 iperf -c 10.0.0.2
 <img width="875" height="533" alt="Pasted image (4)" src="https://github.com/user-attachments/assets/e6711788-92fa-4cf3-a41b-591ef5f2ba9b" />
 
 6. Flow Table Verification
-<img width="1199" height="405" alt="Pasted image (5)" src="https://github.com/user-attachments/assets/d8bdd6a4-913a-44e5-a4dc-d5a43106c919" />
+<img width="1203" height="402" alt="Screenshot From 2026-04-19 10-37-43" src="https://github.com/user-attachments/assets/d4335487-088f-40ac-860f-8b34d29c1bea" />
 
 7. Throughput Test - iperf
-<img width="827" height="731" alt="Pasted image (7)" src="https://github.com/user-attachments/assets/7484d94c-4a33-41f1-9763-87cdb5b4d553" />
-
+<img width="877" height="725" alt="Screenshot From 2026-04-19 10-48-15" src="https://github.com/user-attachments/assets/86eeb1b4-ccd6-4a26-b08d-798faa355f8b" />
+   
 ###Results
 
 - Successful controller-switch interaction observed
