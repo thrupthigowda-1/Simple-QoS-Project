@@ -2,10 +2,12 @@
 Computer Networks Project
 
 ## Problem Statement
-This project implements a simple SDN-based QoS Priority Controller using POX and Mininet to demonstrate controller-switch interaction, flow rule handling, and network behavior observation.
+The goal of this project is to implement a simple Software Defined Networking (SDN) based QoS Priority Controller using POX and Mininet. The system demonstrates controller-switch interaction, flow rule installation, and traffic behavior analysis.
 
 ## Objective
-To prioritize selected traffic flows using SDN rules and analyze network latency, throughput, and flow table behavior.
+- To simulate QoS behavior in an SDN environment
+- To observe controller-based packet handling
+- To analyze latency, throughput, and flow table behavior.
 
 ## Tools Used
 - Ubuntu VM
@@ -46,9 +48,22 @@ h1 iperf -c 10.0.0.2
 
 ###Controller Logic
 
-The custom POX controller handles PacketIn events and installs flow rules based on source and destination MAC addresses. The controller applies simple QoS-related forwarding logic and enables controller-switch interaction using OpenFlow.
+- The controller listens for PacketIn events
+- It extracts source and destination MAC addresses
+- Installs flow rules using OpenFlow
+- Implements simple QoS-based forwarding logic
+- Demonstrates controller-based traffic handling.
 
-Screenshots
+###Expected Output
+
+- Controller successfully connects to switch
+- Hosts communicate through Mininet topology
+- Flow rules are installed in Open vSwitch
+- Latency observed using ping
+- Throughput measured using iperf
+
+###Screenshots
+
 1. POX Controller Startup
 <img width="1011" height="735" alt="image" src="https://github.com/user-attachments/assets/7d91ffd4-c230-47bb-aa4e-19f5b3036321" />
 
@@ -70,9 +85,19 @@ Screenshots
 7. Throughput Test - iperf
 <img width="827" height="731" alt="Pasted image (7)" src="https://github.com/user-attachments/assets/7484d94c-4a33-41f1-9763-87cdb5b4d553" />
 
-The custom controller code used for this project is available in:
+###Results
 
+- Successful controller-switch interaction observed
+- Flow rules installed and verified in switch
+- Network latency measured between hosts
+- Throughput analyzed using iperf
+- Demonstrated SDN-based traffic handling
+
+###Conclusion
+
+This project successfully demonstrates the implementation of a simple QoS Priority Controller using POX and Mininet. The system validates controller-based flow handling, network behavior, and performance metrics in an SDN environment.
+
+Source Code
+
+The controller implementation is provided in:
 qos_controller.py
-Conclusion
-
-This project successfully demonstrated controller-switch interaction, flow rule handling, network behavior observation, and basic performance analysis using POX and Mininet in an SDN environment.
