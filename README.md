@@ -47,7 +47,7 @@ Step 6: Throughput Test
 h2 iperf -s &
 h1 iperf -c 10.0.0.2
 
-###Controller Logic
+## Controller Logic
 
 - The controller listens for PacketIn events
 - It extracts source and destination MAC addresses
@@ -55,7 +55,7 @@ h1 iperf -c 10.0.0.2
 - Implements simple QoS-based forwarding logic
 - Demonstrates controller-based traffic handling.
 
-###Expected Output
+## Expected Output
 
 - Controller successfully connects to switch
 - Hosts communicate through Mininet topology
@@ -63,7 +63,7 @@ h1 iperf -c 10.0.0.2
 - Latency observed using ping
 - Throughput measured using iperf
 
-###Screenshots
+## Screenshots
 
 1. POX Controller Startup
 <img width="1011" height="735" alt="image" src="https://github.com/user-attachments/assets/7d91ffd4-c230-47bb-aa4e-19f5b3036321" />
@@ -85,8 +85,21 @@ h1 iperf -c 10.0.0.2
 
 7. Throughput Test - iperf
 <img width="877" height="725" alt="Screenshot From 2026-04-19 10-48-15" src="https://github.com/user-attachments/assets/86eeb1b4-ccd6-4a26-b08d-798faa355f8b" />
+
+## QoS Rule Implementation
+
+Applied SDN flow rules to prioritize and control traffic.
+
+Flow Table with Priority Rules
+<img width="1210" height="240" alt="Screenshot From 2026-04-19 12-10-55" src="https://github.com/user-attachments/assets/6d97411d-2521-4019-b814-86970cad5dd7" />
+
+# Traffic Behavior After Applying QoS
+
+h1 to h2 (Allowed Traffic) and 
+h1 to h3 (Blocked Traffic)
+<img width="1202" height="740" alt="Screenshot From 2026-04-19 12-08-19" src="https://github.com/user-attachments/assets/8c47190c-cc77-44cf-9291-64bffdb7ed9b" />
    
-###Results
+## Results
 
 - Successful controller-switch interaction observed
 - Flow rules installed and verified in switch
@@ -94,7 +107,7 @@ h1 iperf -c 10.0.0.2
 - Throughput analyzed using iperf
 - Demonstrated SDN-based traffic handling
 
-###Conclusion
+## Conclusion
 
 This project successfully demonstrates the implementation of a simple QoS Priority Controller using POX and Mininet. The system validates controller-based flow handling, network behavior, and performance metrics in an SDN environment.
 
